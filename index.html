@@ -1,0 +1,153 @@
+<!--- secure the template --->
+<CF_SECURETEMPLATE>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no" />
+    
+    <CFSCRIPT>loadDocHead();</CFSCRIPT>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue :wght@400;500;600;700&family=Marcellus&display=swap" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" type="text/css" />
+    
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <!--- OH OVERRIDES --->
+    <style>
+        a {
+            font-size: unset;
+            font-weight: unset
+        }
+        #room_btn, #book_btn, #submit_btn {
+            background: rgba(140, 44, 37, var(--tw-bg-opacity)) !important;
+        }
+        .lineItem[data-color='green'] {
+            color: rgba(140, 44, 37, var(--tw-bg-opacity)) !important;
+        }
+    </style>
+</head>
+<body class="h-full min-h-full overflow-x-hidden font-sans antialiased text-black bg-white">
+    <div class="flex flex-col min-h-screen">
+        <header class="bg-white">
+            <div class="px-4">
+                <nav class="flex items-center justify-between h-24">
+                    <button type="button" class="block p-1 transition-all duration-300 bg-transparent rounded text-gold-600 hover:bg-gray-800 focus:bg-gray-800 focus:outline-none lg:hidden" data-toggle="offcanvas" data-target="#mobileNav">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                        </svg>
+                    </button>
+                    <div class="block">
+                        <a href="//www.viewsinn.com/" title="Views Inn" class="block">
+                            <img class="w-auto h-20" src="/assets/img/logo.png" alt="<CFOUTPUT>#REQUEST.site_name#</CFOUTPUT>" />
+                        </a>
+                    </div>
+                    <div class="hidden ml-auto lg:flex lg:items-center lg:space-x-7 2xl:space-x-8">
+                        <a href="//www.viewsinn.com/" title="Home" class="nav-link"> Home </a>
+                        <a href="//www.viewsinn.com/accommodations.html" title="Rooms" class="nav-link"> Accommodations </a>
+                        <a href="//www.viewsinn.com/gallery.html" title="Gallery" class="nav-link"> Gallery </a>
+                        <a href="//www.viewsinn.com/sightseeing.html" title="Attractions" class="nav-link"> Sightseeing </a>
+                        <a href="//www.viewsinn.com/amenities.html" title="Amenities" class="nav-link"> Amenities </a>
+                        <a href="//www.viewsinn.com/accessibility.html" title="Accessibility" class="nav-link"> Accessibility </a>
+                        <a href="//www.viewsinn.com/shop-dine.html" title="Shop-Dine" class="nav-link"> Shop & Dine </a>
+                        <a href="//www.viewsinn.com/faq.html" title="FAQs" class="nav-link"> FAQs </a>
+                        <a href="//www.viewsinn.com/contact-us.html" title="Contact Us" class="nav-link"> Contact Us </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="flex-1">
+            <section class="relative py-12">
+                <div class="absolute inset-0 z-10">
+                    <img class="object-cover w-full h-full" src="/assets/img/b1.jpg" alt="" />
+                </div>
+                <div class="absolute inset-0 z-10"></div>
+                <div class="container relative z-20">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <div class="w-32 h-32 overflow-hidden rounded-md"></div>
+                        <div class="flex-1 mt-6 md:ml-8 md:mt-0">
+                            <h1 class="font-serif text-6xl text-white">Book Now</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-12 bg-white sm:py-16">
+                <div class="container">
+                    <div class="w-full">
+                        <h2 class="font-serif text-4xl">Book Now</h2>
+                        <CFINVOKE COMPONENT="hotel.bookingengine.display" METHOD="resbox" />
+
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-view_color">
+            <div class="text-center font-semibold font-serif text-2xl">
+                <p class="text-white">Need help with booking or discounts?</p>
+                <p class="text-white">Call us at <a href="tel:<CFOUTPUT>#REQUEST.phone#</CFOUTPUT>"> <CFOUTPUT>#REQUEST.phone#</CFOUTPUT></a></p>
+            </div>
+        </footer>
+        <div class="bg-view_color">
+            <div class="container">
+                <div class="lg:flex lg:items-center lg:justify-between mt-2 mb-4">
+                    <div class="flex items-center justify-center lg:order-2">
+                        <ul class="flex gap-4 flex-row justify-center items-center">
+                            <li>
+                                <a class="w-10 h-10 bg-view_color text-white rounded-full inline-block text-center flex justify-center items-center hover:bg-gold-600" target="_blank" href="https://www.facebook.com/theviewsinn/"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a class="w-10 h-10 bg-view_color text-white rounded-full inline-block text-center flex justify-center items-center hover:bg-gold-600" target="_blank" href="https://www.google.com/maps/place/Views+Inn+Sedona/@34.7798095,-111.7646563,17z/data=!3m1!4b1!4m8!3m7!1s0x872da6076b672939:0xe0bc069a5baa4bd0!5m2!4m1!1i2!8m2!3d34.7798095!4d-111.7624676"><i class="fa fa-map-marker"></i></a>
+                            </li>
+                            <li>
+                                <a class="w-10 h-10 bg-view_color text-white rounded-full inline-block text-center flex justify-center items-center hover:bg-gold-600" target="_blank" href="https://twitter.com/InnViews"><i class="fa fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex items-center justify-center space-x-8 lg:justify-end lg:order-3">
+                        <a href="//www.viewsinn.com/privacy-policy.html" title="Hotel Policy" class="text-sm text-white transition-all duration-300 hover:text-gold-600"> Privacy Policy </a>
+                        <span class="text-white">|</span>
+                        <a href="//www.viewsinn.com/blog.html" title="Hotel Policy" class="text-sm text-white transition-all duration-300 hover:text-gold-600"> Blog </a>
+                    </div>
+                    <p class="mt-4 mb-4 lg:mb-0 text-sm text-center text-white lg:text-left lg:order-1 lg:mt-0">&copy; <span id="currentYear"></span> The Views Inn Sedona - All Rights Reserved. Fuel By Websrefresh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="fixed max-w-xs bg-white offcanvas offcanvas-left" tabindex="-1" id="mobileNav" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <div class="block">
+                <a href="//www.viewsinn.com/" title="Hotel Inn" class="block">
+                    <img class="w-auto h-16" src="/assets/img/logo.png" alt="<CFOUTPUT>#REQUEST.site_name#</CFOUTPUT>" />
+                </a>
+            </div>
+            <!-- close button -->
+            <button type="button" class="btn-close text-gold-600 hover:bg-gray-800" data-dismiss="offcanvas" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+        </div>
+        <div class="px-0 py-4 offcanvas-body">
+            <div class="space-y-1">
+                <a href="//www.viewsinn.com/" title="Home" class="mobile-nav-link"> Home </a>
+                <a href="//www.viewsinn.com/accommodations.html" title="Rooms" class="mobile-nav-link"> Accommodations </a>
+                <a href="//www.viewsinn.com/gallery.html" title="Gallery" class="mobile-nav-link"> Gallery </a>
+                <a href="//www.viewsinn.com/sightseeing.html" title="Attractions" class="mobile-nav-link"> Sightseeing </a>
+                <a href="//www.viewsinn.com/amenities.html" title="Amenities" class="mobile-nav-link"> Amenities </a>
+                <a href="//www.viewsinn.com/accessibility.html" title="Accessibility" class="mobile-nav-link"> Accessibility </a>
+                <a href="//www.viewsinn.com/shop-dine.html" title="Shop-Dine" class="mobile-nav-link"> Shop & Dine </a>
+                <a href="//www.viewsinn.com/faq.html" title="FAQs" class="mobile-nav-link"> FAQs </a>
+                <a href="//www.viewsinn.com/contact-us.html" title="Contact Us" class="mobile-nav-link"> Contact Us </a>
+            </div>
+        </div>
+    </aside>    
+    <script src="/assets/js/main.js"></script>
+    <CFINVOKE COMPONENT="website.main" METHOD="analytics" />
+</body>
+</html>
